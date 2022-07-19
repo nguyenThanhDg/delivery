@@ -40,7 +40,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Product.findByName", query = "SELECT p FROM Product p WHERE p.name = :name"),
     @NamedQuery(name = "Product.findByPrice", query = "SELECT p FROM Product p WHERE p.price = :price"),
     @NamedQuery(name = "Product.findByCreatedDate", query = "SELECT p FROM Product p WHERE p.createdDate = :createdDate"),
-    @NamedQuery(name = "Product.findByActive", query = "SELECT p FROM Product p WHERE p.active = :active"),
     @NamedQuery(name = "Product.findByStatus", query = "SELECT p FROM Product p WHERE p.status = :status")})
 public class Product implements Serializable {
 
@@ -65,8 +64,10 @@ public class Product implements Serializable {
     @Column(name = "created_date")
     @Temporal(TemporalType.DATE)
     private Date createdDate;
-    @Column(name = "active")
-    private Boolean active;
+    @Column(name = "delivery_address")
+    private String deliveryAddress;
+    @Column(name = "get_address")
+    private String getAddress;
     @Size(max = 10)
     @Column(name = "status")
     private String status;
@@ -122,14 +123,6 @@ public class Product implements Serializable {
         this.createdDate = createdDate;
     }
 
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -178,6 +171,34 @@ public class Product implements Serializable {
     @Override
     public String toString() {
         return "com.ntd.pojo.Product[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the deliveryAddress
+     */
+    public String getDeliveryAddress() {
+        return deliveryAddress;
+    }
+
+    /**
+     * @param deliveryAddress the deliveryAddress to set
+     */
+    public void setDeliveryAddress(String deliveryAddress) {
+        this.deliveryAddress = deliveryAddress;
+    }
+
+    /**
+     * @return the getAddress
+     */
+    public String getGetAddress() {
+        return getAddress;
+    }
+
+    /**
+     * @param getAddress the getAddress to set
+     */
+    public void setGetAddress(String getAddress) {
+        this.getAddress = getAddress;
     }
     
 }
