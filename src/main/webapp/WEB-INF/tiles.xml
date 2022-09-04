@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <definition name="baseLayout" template="/WEB-INF/layout/base.jsp">
+        <put-attribute name="title" value="..." />
+        <put-attribute name="header" value="/WEB-INF/layout/header.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+        <put-attribute name="navbar" value="/WEB-INF/layout/navbar.jsp" />
+        <put-attribute name="content" value="..." />
+    </definition>
+    <definition name="login" template="/WEB-INF/jsp/login.jsp">
+    </definition>
+    <definition name="admin" template="/WEB-INF/layout/base-admin.jsp">
+        <put-attribute name="title" value="..." />
+        <put-attribute name="header" value="/WEB-INF/layout/admin-header.jsp" />
+        <put-attribute name="content" value="..." />
+    </definition>
+    <definition name="admin-page" extends="admin">
+        <put-attribute name="title" value="Delivery App Admin" />
+        <put-attribute name="content" value="/WEB-INF/jsp/admin-page.jsp" />
+    </definition>
+    <definition name="update-shipper" extends="admin">
+        <put-attribute name="title" value="Delivery App Admin" />
+        <put-attribute name="content" value="/WEB-INF/jsp/update-shipper.jsp" />
+    </definition>
+    <definition name="register" template="/WEB-INF/jsp/register.jsp">
+    </definition>
+    <definition name="index" extends="baseLayout">
+        <put-attribute name="title" value="Home Page" />
+        <put-attribute name="content" value="/WEB-INF/jsp/index.jsp" />
+    </definition>
+    <definition name="detail" extends="baseLayout">
+        <put-attribute name="title" value="Product Detail" />
+        <put-attribute name="content" value="/WEB-INF/jsp/product-detail.jsp" />
+    </definition>
+    <definition name="gotoshipper" extends="baseLayout">
+        <put-attribute name="title" value="Register Shipper" />
+        <put-attribute name="content" value="/WEB-INF/jsp/gotoshipper.jsp" />
+    </definition>
+    <definition name="addproduct" extends="baseLayout">
+        <put-attribute name="title" value="Add Product" />
+        <put-attribute name="content" value="/WEB-INF/jsp/add-product.jsp" />
+    </definition>
+    <definition name="listShipper" extends="baseLayout">
+        <put-attribute name="title" value="List Shipper" />
+        <put-attribute name="content" value="/WEB-INF/jsp/listshipper.jsp" />
+    </definition>
+    <definition name="baseAdminLayout" template="/WEB-INF/layout/base-admin.jsp">
+        <put-attribute name="title" value="Quan tri he thong ban hang" />
+        <put-attribute name="left" value="/WEB-INF/layout/admin-left.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/layout/admin-footer.jsp" />
+        <put-attribute name="content" value="..." />
+    </definition>
+    <definition name="listgotoshipper" extends="baseAdminLayout">
+        <put-attribute name="title" value="Danh sach dang ky shipper" />
+        <put-attribute name="content" value="/WEB-INF/jsp/listgotoshipper.jsp" />
+    </definition>
+    <definition name="listadminshipper" extends="baseAdminLayout">
+        <put-attribute name="title" value="Danh sach dang ky shipper" />
+        <put-attribute name="content" value="/WEB-INF/jsp/admin-listshipper.jsp" />
+    </definition>
+    <definition name="updateShipper" extends="baseAdminLayout">
+        <put-attribute name="title" value="Chinh sua thong tin" />
+        <put-attribute name="content" value="/WEB-INF/jsp/updateShipper.jsp" />
+    </definition>
+    <definition name="statsProduct" extends="baseAdminLayout">
+        <put-attribute name="title" value="Thong ke don hang" />
+        <put-attribute name="content" value="/WEB-INF/jsp/statsProduct.jsp" />
+    </definition>
+    <definition name="statsMonth" extends="baseAdminLayout">
+        <put-attribute name="title" value="Bieu do" />
+        <put-attribute name="content" value="/WEB-INF/jsp/statsMonth.jsp" />
+    </definition>
+    <definition name="shipperDetail" extends="baseLayout">
+        <put-attribute name="title" value="Delivery Person Details" />
+        <put-attribute name="content" value="/WEB-INF/jsp/shipper-detail.jsp" />
+    </definition>
+    <definition name="productCustomer" extends="baseLayout">
+        <put-attribute name="title" value="Posted products" />
+        <put-attribute name="content" value="/WEB-INF/jsp/productCustomer.jsp" />
+    </definition>
+    <definition name="updateProduct" extends="baseLayout">
+        <put-attribute name="title" value="Chinh sua san pham" />
+        <put-attribute name="content" value="/WEB-INF/jsp/updateProduct.jsp" />
+    </definition>
+    <definition name="viewShipper" extends="baseLayout">
+        <put-attribute name="title" value="Xem danh sach shipper van chuyen" />
+        <put-attribute name="content" value="/WEB-INF/jsp/viewShipper.jsp" />
+    </definition>
+    <definition name="productShipper" extends="baseLayout">
+        <put-attribute name="title" value="Danh sach san pham can van chuyen" />
+        <put-attribute name="content" value="/WEB-INF/jsp/productShipper.jsp" />
+    </definition>
+</tiles-definitions>
+

@@ -4,6 +4,7 @@
  */
 package com.ntd.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -34,8 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Comment.findAll", query = "SELECT c FROM Comment c"),
     @NamedQuery(name = "Comment.findById", query = "SELECT c FROM Comment c WHERE c.id = :id"),
     @NamedQuery(name = "Comment.findByCreatedDate", query = "SELECT c FROM Comment c WHERE c.createdDate = :createdDate"),
-    @NamedQuery(name = "Comment.findByContent", query = "SELECT c FROM Comment c WHERE c.content = :content"),
-    @NamedQuery(name = "Comment.findByUpdatedDate", query = "SELECT c FROM Comment c WHERE c.updatedDate = :updatedDate")})
+    @NamedQuery(name = "Comment.findByContent", query = "SELECT c FROM Comment c WHERE c.content = :content")})
 public class Comment implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,22 +47,19 @@ public class Comment implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "created_date")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
     @Column(name = "content")
     private String content;
-    @Column(name = "updated_date")
-    @Temporal(TemporalType.DATE)
-    private Date updatedDate;
     @JoinColumn(name = "customer", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private UserCustomer customer;
+    private User customer;
     @JoinColumn(name = "shipper", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private UserShipper shipper;
+    private User shipper;
 
     public Comment() {
     }
@@ -101,29 +98,15 @@ public class Comment implements Serializable {
         this.content = content;
     }
 
-    public Date getUpdatedDate() {
-        return updatedDate;
-    }
-
-    public void setUpdatedDate(Date updatedDate) {
-        this.updatedDate = updatedDate;
-    }
-
-    public UserCustomer getCustomer() {
+    public User getCustomer() {
         return customer;
     }
 
-    public void setCustomer(UserCustomer customer) {
+    public void setCustomer(User customer) {
         this.customer = customer;
     }
 
-    public UserShipper getShipper() {
-        return shipper;
-    }
 
-    public void setShipper(UserShipper shipper) {
-        this.shipper = shipper;
-    }
 
     @Override
     public int hashCode() {
@@ -148,6 +131,20 @@ public class Comment implements Serializable {
     @Override
     public String toString() {
         return "com.ntd.pojo.Comment[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the shipper
+     */
+    public User getShipper() {
+        return shipper;
+    }
+
+    /**
+     * @param shipper the shipper to set
+     */
+    public void setShipper(User shipper) {
+        this.shipper = shipper;
     }
     
 }

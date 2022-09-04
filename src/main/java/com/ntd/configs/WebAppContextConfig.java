@@ -4,6 +4,12 @@
  */
 package com.ntd.configs;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
+import com.ntd.validator.UsernameValidator;
+import com.ntd.validator.WebAppValidator;
+import java.util.HashSet;
+import java.util.Set;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -12,6 +18,7 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -24,48 +31,88 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableTransactionManagement
 @ComponentScan(basePackages = {
     "com.ntd.repository",
-    "com.ntd.controllers",
-    "com.ntd.service"
-//    "com.ntd.validator"
+    "com.ntd.controller",
+    "com.ntd.service",
+    "com.ntd.validator"
 })
 public class WebAppContextConfig implements WebMvcConfigurer {
+
     
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
-    
-     @Override
+
+    @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/images/**").addResourceLocations("/resources/images/");
         registry.addResourceHandler("/css/**").addResourceLocations("/resources/css/");
+        registry.addResourceHandler("/fonts/**").addResourceLocations("/resources/fonts/");
         registry.addResourceHandler("/js/**").addResourceLocations("/resources/js/");
+        registry.addResourceHandler("/vendor/**").addResourceLocations("/resources/vendor/");
+        registry.addResourceHandler("/assets/**").addResourceLocations("/resources/assets/");
+        registry.addResourceHandler("/admin/**").addResourceLocations("/resources/admin/");
     }
+
     @Override
     public Validator getValidator() {
         return validator();
     }
+    
+
     @Bean
     public LocalValidatorFactoryBean validator() {
-        LocalValidatorFactoryBean v = new LocalValidatorFactoryBean();
-        v.setValidationMessageSource(messageSource());
-        
-        return v;
+        LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
+        bean.setValidationMessageSource(messageSource());
+        return bean;
     }
+    
+
     @Bean
     public MessageSource messageSource() {
         ResourceBundleMessageSource source = new ResourceBundleMessageSource();
         source.setBasename("messages");
-        
+
         return source;
     }
     
     @Bean
-    public InternalResourceViewResolver getInternalResourceViewResolver(){
+    public WebAppValidator userValidator(){
+        Set<Validator> springValidators = new HashSet<>();
+        springValidators.add(new UsernameValidator());
+        WebAppValidator valid = new WebAppValidator();
+        valid.setSpringValidators(springValidators);
+        return valid;
+    }
+
+    @Bean
+    public InternalResourceViewResolver getInternalResourceViewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setViewClass(JstlView.class);
         resolver.setPrefix("/WEB-INF/jsp/");
         resolver.setSuffix(".jsp");
         return resolver;
     }
+
+    @Bean
+    public CommonsMultipartResolver multipartResolver() {
+        CommonsMultipartResolver resolver
+                = new CommonsMultipartResolver();
+        resolver.setDefaultEncoding("UTF-8");
+        return resolver;
+    }
+
+    @Bean
+    public Cloudinary cloudinary() {
+        Cloudinary cloudinary
+                = new Cloudinary(ObjectUtils.asMap(
+                        "cloud_name", "dvkt3pe95",
+                        "api_key", "949533314679861",
+                        "api_secret", "aARBDqLBeI-a5WXNR-qbEn6uAdg",
+                        "secure", true
+                ));
+        return cloudinary;
+    }
+    
+   
 }

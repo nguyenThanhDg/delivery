@@ -5,8 +5,8 @@
 package com.ntd.pojo;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
-import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,10 +22,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -40,10 +42,16 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Product.findByName", query = "SELECT p FROM Product p WHERE p.name = :name"),
     @NamedQuery(name = "Product.findByPrice", query = "SELECT p FROM Product p WHERE p.price = :price"),
     @NamedQuery(name = "Product.findByCreatedDate", query = "SELECT p FROM Product p WHERE p.createdDate = :createdDate"),
-    @NamedQuery(name = "Product.findByStatus", query = "SELECT p FROM Product p WHERE p.status = :status")})
+    @NamedQuery(name = "Product.findByStatus", query = "SELECT p FROM Product p WHERE p.status = :status"),
+    @NamedQuery(name = "Product.findByDiliveryAddress", query = "SELECT p FROM Product p WHERE p.diliveryAddress = :diliveryAddress"),
+    @NamedQuery(name = "Product.findByGetAddress", query = "SELECT p FROM Product p WHERE p.getAddress = :getAddress"),
+    @NamedQuery(name = "Product.findByImage", query = "SELECT p FROM Product p WHERE p.image = :image")})
 public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    public static final String on = "ON";
+    public static final String active = "ACTIVE";
+    public static final String accept = "ACCEPT";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -64,19 +72,33 @@ public class Product implements Serializable {
     @Column(name = "created_date")
     @Temporal(TemporalType.DATE)
     private Date createdDate;
-    @Column(name = "delivery_address")
-    private String deliveryAddress;
-    @Column(name = "get_address")
-    private String getAddress;
     @Size(max = 10)
     @Column(name = "status")
     private String status;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "dilivery_address")
+    private String diliveryAddress;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "get_address")
+    private String getAddress;
+    @Size(max = 255)
+    @Column(name = "image")
+    private String image;
+    @Basic(optional = false)
+    @Size(max = 2222)
+    @Column(name = "description")
+    private String description;
     @JoinColumn(name = "customer", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private UserCustomer customer;
+    private User customer;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
-    private Set<ProductShipper> productShipperSet;
-
+    private Collection<ProductShipper> productShipperCollection;
+    @Transient
+    private MultipartFile file;
     public Product() {
     }
 
@@ -84,11 +106,13 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    public Product(Integer id, String name, String price, Date createdDate) {
+    public Product(Integer id, String name, String price, Date createdDate, String diliveryAddress, String getAddress) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.createdDate = createdDate;
+        this.diliveryAddress = diliveryAddress;
+        this.getAddress = getAddress;
     }
 
     public Integer getId() {
@@ -131,21 +155,45 @@ public class Product implements Serializable {
         this.status = status;
     }
 
-    public UserCustomer getCustomer() {
+    public String getDiliveryAddress() {
+        return diliveryAddress;
+    }
+
+    public void setDiliveryAddress(String diliveryAddress) {
+        this.diliveryAddress = diliveryAddress;
+    }
+
+    public String getGetAddress() {
+        return getAddress;
+    }
+
+    public void setGetAddress(String getAddress) {
+        this.getAddress = getAddress;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public User getCustomer() {
         return customer;
     }
 
-    public void setCustomer(UserCustomer customer) {
+    public void setCustomer(User customer) {
         this.customer = customer;
     }
 
     @XmlTransient
-    public Set<ProductShipper> getProductShipperSet() {
-        return productShipperSet;
+    public Collection<ProductShipper> getProductShipperCollection() {
+        return productShipperCollection;
     }
 
-    public void setProductShipperSet(Set<ProductShipper> productShipperSet) {
-        this.productShipperSet = productShipperSet;
+    public void setProductShipperCollection(Collection<ProductShipper> productShipperCollection) {
+        this.productShipperCollection = productShipperCollection;
     }
 
     @Override
@@ -174,31 +222,31 @@ public class Product implements Serializable {
     }
 
     /**
-     * @return the deliveryAddress
+     * @return the file
      */
-    public String getDeliveryAddress() {
-        return deliveryAddress;
+    public MultipartFile getFile() {
+        return file;
     }
 
     /**
-     * @param deliveryAddress the deliveryAddress to set
+     * @param file the file to set
      */
-    public void setDeliveryAddress(String deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
 
     /**
-     * @return the getAddress
+     * @return the description
      */
-    public String getGetAddress() {
-        return getAddress;
+    public String getDescription() {
+        return description;
     }
 
     /**
-     * @param getAddress the getAddress to set
+     * @param description the description to set
      */
-    public void setGetAddress(String getAddress) {
-        this.getAddress = getAddress;
+    public void setDescription(String description) {
+        this.description = description;
     }
     
 }

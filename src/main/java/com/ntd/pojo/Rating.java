@@ -46,21 +46,21 @@ public class Rating implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "rate")
-    private short rate;
+    private int rate;
     @Basic(optional = false)
     @NotNull
     @Column(name = "created_date")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
     @Column(name = "updated_date")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date updatedDate;
     @JoinColumn(name = "customer", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private UserCustomer customer;
+    private User customer;
     @JoinColumn(name = "shipper", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private UserShipper shipper;
+    private User shipper;
 
     public Rating() {
     }
@@ -83,11 +83,11 @@ public class Rating implements Serializable {
         this.id = id;
     }
 
-    public short getRate() {
+    public int getRate() {
         return rate;
     }
 
-    public void setRate(short rate) {
+    public void setRate(int rate) {
         this.rate = rate;
     }
 
@@ -107,20 +107,12 @@ public class Rating implements Serializable {
         this.updatedDate = updatedDate;
     }
 
-    public UserCustomer getCustomer() {
+    public User getCustomer() {
         return customer;
     }
 
-    public void setCustomer(UserCustomer customer) {
+    public void setCustomer(User customer) {
         this.customer = customer;
-    }
-
-    public UserShipper getShipper() {
-        return shipper;
-    }
-
-    public void setShipper(UserShipper shipper) {
-        this.shipper = shipper;
     }
 
     @Override
@@ -146,6 +138,20 @@ public class Rating implements Serializable {
     @Override
     public String toString() {
         return "com.ntd.pojo.Rating[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the shipper
+     */
+    public User getShipper() {
+        return shipper;
+    }
+
+    /**
+     * @param shipper the shipper to set
+     */
+    public void setShipper(User shipper) {
+        this.shipper = shipper;
     }
     
 }

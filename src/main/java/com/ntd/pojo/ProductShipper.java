@@ -46,7 +46,7 @@ public class ProductShipper implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "cost")
-    private long cost;
+    private int cost;
     @Basic(optional = false)
     @NotNull
     @Column(name = "created_date")
@@ -55,12 +55,15 @@ public class ProductShipper implements Serializable {
     @Column(name = "updated_date")
     @Temporal(TemporalType.DATE)
     private Date updatedDate;
+    @Basic(optional = false)
+    @Column(name = "active")
+    private int active1;
     @JoinColumn(name = "product", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Product product;
     @JoinColumn(name = "shipper", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private UserShipper shipper;
+    private User shipper;
 
     public ProductShipper() {
     }
@@ -69,7 +72,7 @@ public class ProductShipper implements Serializable {
         this.id = id;
     }
 
-    public ProductShipper(Integer id, long cost, Date createdDate) {
+    public ProductShipper(Integer id, int cost, Date createdDate) {
         this.id = id;
         this.cost = cost;
         this.createdDate = createdDate;
@@ -83,11 +86,11 @@ public class ProductShipper implements Serializable {
         this.id = id;
     }
 
-    public long getCost() {
+    public int getCost() {
         return cost;
     }
 
-    public void setCost(long cost) {
+    public void setCost(int cost) {
         this.cost = cost;
     }
 
@@ -115,13 +118,7 @@ public class ProductShipper implements Serializable {
         this.product = product;
     }
 
-    public UserShipper getShipper() {
-        return shipper;
-    }
-
-    public void setShipper(UserShipper shipper) {
-        this.shipper = shipper;
-    }
+    
 
     @Override
     public int hashCode() {
@@ -147,5 +144,35 @@ public class ProductShipper implements Serializable {
     public String toString() {
         return "com.ntd.pojo.ProductShipper[ id=" + id + " ]";
     }
+
+    /**
+     * @return the shipper
+     */
+    public User getShipper() {
+        return shipper;
+    }
+
+    /**
+     * @param shipper the shipper to set
+     */
+    public void setShipper(User shipper) {
+        this.shipper = shipper;
+    }
+
+    /**
+     * @return the active1
+     */
+    public int getActive1() {
+        return active1;
+    }
+
+    /**
+     * @param active1 the active to set
+     */
+    public void setActive1(int active1) {
+        this.active1 = active1;
+    }
+
+    
     
 }

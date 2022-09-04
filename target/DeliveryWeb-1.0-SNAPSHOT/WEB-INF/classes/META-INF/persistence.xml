@@ -2,13 +2,14 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="com.ntd_DeliveryWeb_war_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>com.ntd.pojo.UserAdmin</class>
-    <class>com.ntd.pojo.ProductShipper</class>
-    <class>com.ntd.pojo.Product</class>
-    <class>com.ntd.pojo.UserShipper</class>
     <class>com.ntd.pojo.Rating</class>
-    <class>com.ntd.pojo.Comment</class>
+    <class>com.ntd.pojo.UserShipper</class>
     <class>com.ntd.pojo.UserCustomer</class>
+    <class>com.ntd.pojo.ProductShipper</class>
+    <class>com.ntd.pojo.UserAdmin</class>
+    <class>com.ntd.pojo.Comment</class>
+    <class>com.ntd.pojo.User</class>
+    <class>com.ntd.pojo.Product</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/deliverydb?zeroDateTimeBehavior=CONVERT_TO_NULL"/>

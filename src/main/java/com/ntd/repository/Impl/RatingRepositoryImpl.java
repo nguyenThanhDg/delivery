@@ -1,0 +1,87 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.ntd.repository.Impl;
+
+import com.ntd.pojo.Rating;
+import com.ntd.pojo.User;
+import com.ntd.repository.RatingRepository;
+import com.ntd.repository.UserRepository;
+import java.util.Date;
+import java.util.List;
+import javax.persistence.TemporalType;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+/**
+ *
+ * @author Admin
+ */
+@Repository
+@Transactional
+public class RatingRepositoryImpl implements RatingRepository {
+
+    @Autowired
+    private LocalSessionFactoryBean sessionFactory;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Override
+    public Rating addRating(String content, int shipperId, User creator) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Rating r = new Rating();
+        r.setShipper(this.userRepository.getUserById(shipperId));
+        r.setCreatedDate(new Date());
+        r.setUpdatedDate(new Date());
+        r.setCustomer(creator);
+        int rate = Integer.parseInt(content);
+        r.setRate(rate);
+        session.save(r);
+        return r;
+    }
+
+    @Override
+    public List<Rating> checkUserAndPro(User user, int shipperId) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Rating> query = builder.createQuery(Rating.class);
+        Root root = query.from(Rating.class);
+        query = query.select(root);
+        Predicate p1 = builder.equal(root.get("customer"), user.getId());
+        Predicate p2 = builder.equal(root.get("shipper"), shipperId);
+        query.where(builder.and(p1, p2));
+        Query q = session.createQuery(query);
+        return q.getResultList();
+    }
+
+    @Override
+    public Rating updateRating(int id, String content) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Rating r = session.get(Rating.class, id);
+        int rate = Integer.parseInt(content);
+        r.setRate(rate);
+        r.setUpdatedDate(new Date());
+        return r;
+
+    }
+
+    @Override
+    public long avgRating(int id) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Query q = session.createQuery("Select avg(rate) From Rating r where r.shipper.id = :shipper");
+        q.setParameter("shipper", id);
+        long a = Math.round((double) q.getSingleResult());
+        return a ;
+    }
+}
