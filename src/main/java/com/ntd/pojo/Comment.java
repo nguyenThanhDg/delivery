@@ -54,9 +54,11 @@ public class Comment implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "content")
     private String content;
+    @JsonIgnore
     @JoinColumn(name = "customer", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private User customer;
+    @JsonIgnore
     @JoinColumn(name = "shipper", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private User shipper;

@@ -54,7 +54,8 @@ public class ProductRepositoryImpl implements ProductRepository {
             Predicate p = builder.like(root.get("name").as(String.class), String.format("%%%s%%", kw));
             query = query.where(p);
         }
-
+        Predicate p1 = builder.like(root.get("status").as(String.class), "ON");
+        query = query.where(p1);
         Query q = session.createQuery(query);
         int max = 3;
         q.setMaxResults(max);
@@ -71,7 +72,8 @@ public class ProductRepositoryImpl implements ProductRepository {
     @Override
     public long countProduct() {
         Session session = this.sessionFactory.getObject().getCurrentSession();
-        Query q = session.createQuery("Select count(*) from Product");
+        Query q = session.createQuery("Select count(*) from Product where status = :status");
+        q.setParameter("status", "ON");
         return Long.parseLong(q.getSingleResult().toString());
     }
 

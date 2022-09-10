@@ -14,13 +14,12 @@ function addComment(endpoint, shipperId) {
     }).then(function(data) {
        console.log('Success:', data);
     })
-    location.reload()
 }
 
 function addRating(endpoint, shipperId) {
-    var selectedSize
-    const radioButtons = document.querySelectorAll('input[name="myrating"]')
-    for (const radioButton of radioButtons) {
+    var selectedSize;
+    const radioB = document.querySelectorAll('input[name="myrating"]');
+    for (const radioButton of radioB) {
         if (radioButton.checked) {
             selectedSize = radioButton.value;
         }
@@ -36,11 +35,10 @@ function addRating(endpoint, shipperId) {
         }
     }).then(function(res) {
         
-        return res.json()
+        return res.json();
     }).then(function(data) {
        console.log('Success:', data);
-    })
-    location.reload()
+    });
 }
 
 function addProductShip(endpoint, productId) {
@@ -59,7 +57,6 @@ function addProductShip(endpoint, productId) {
     }).then(function(data) {
        console.log('Success:', data);
     })
-    location.reload()
 }
 
 

@@ -46,8 +46,9 @@ public class ShipperController {
     @GetMapping("/{shipperId}")
     public String detail(Model model, @PathVariable(value = "shipperId") int shipperId) {
         User user = (User) model.getAttribute("currentUser");
-        if (user != null) {
+        if (user != null ) {
             model.addAttribute("rate", 0);
+            
             model.addAttribute("avg", this.ratingService.avgRating(shipperId));
         } else {
             model.addAttribute("rate", -1);

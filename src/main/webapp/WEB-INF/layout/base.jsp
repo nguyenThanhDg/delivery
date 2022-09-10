@@ -19,7 +19,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
         <link href="<c:url value="/images/header/fav.png" />" rel="shortcut icon" type="image/x-icon" >
         <link href="<c:url value="/css/style.css" />" rel="stylesheet">
-        <link href="<c:url value="/vendor/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
         <link href="<c:url value="/css/responsive.css" />" rel="stylesheet">
         
         <!-- Custom fonts for this template-->
@@ -58,10 +57,8 @@
         
         <script src="<c:url value="/vendor/chart.js/Chart.min.js"/>"></script>
         <script src="<c:url value="/vendor/datatables/jquery.dataTables.js"/>"></script>
-        <script src="<c:url value="/endor/datatables/dataTables.bootstrap4.js"/>"></script>
         <script src="<c:url value="/js/main.js" />"></script>
         <script src="<c:url value="/js/admin.js" />"></script>
-        <script src="<c:url value="/js/sb-admin.min.js"/>"></script>
         <script src="<c:url value="/js/portfolio.js"/>"></script>
         <script src="<c:url value="/js/you-listing.js"/>"></script>
         <script src="<c:url value="/js/menurght.js"/>"></script>

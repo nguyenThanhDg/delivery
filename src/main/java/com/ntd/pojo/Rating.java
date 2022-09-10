@@ -4,6 +4,7 @@
  */
 package com.ntd.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -56,9 +57,11 @@ public class Rating implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedDate;
     @JoinColumn(name = "customer", referencedColumnName = "id")
+    @JsonIgnore
     @ManyToOne(optional = false)
     private User customer;
     @JoinColumn(name = "shipper", referencedColumnName = "id")
+    @JsonIgnore
     @ManyToOne(optional = false)
     private User shipper;
 

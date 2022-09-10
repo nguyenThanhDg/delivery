@@ -4,6 +4,7 @@
  */
 package com.ntd.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -58,9 +59,11 @@ public class ProductShipper implements Serializable {
     @Basic(optional = false)
     @Column(name = "active")
     private int active1;
+    @JsonIgnore
     @JoinColumn(name = "product", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Product product;
+    @JsonIgnore
     @JoinColumn(name = "shipper", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private User shipper;

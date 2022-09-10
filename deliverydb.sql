@@ -33,7 +33,7 @@ CREATE TABLE `comment` (
   KEY `fk_com_ship_idx` (`shipper`),
   CONSTRAINT `fk_com_ship` FOREIGN KEY (`shipper`) REFERENCES `user` (`id`),
   CONSTRAINT `fk_com_user` FOREIGN KEY (`customer`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (1,28,26,'2022-06-26 00:00:00','tuyetvoi'),(2,28,27,'2022-06-26 11:11:00','ngon'),(37,27,30,'2022-09-02 17:57:15','giao hàng nhanh'),(40,26,30,'2022-09-02 20:18:52','giao hàng nhanh x4');
+INSERT INTO `comment` VALUES (1,28,26,'2022-06-26 00:00:00','tuyetvoi'),(2,28,27,'2022-06-26 11:11:00','ngon'),(37,27,30,'2022-09-02 17:57:15','giao hàng nhanh'),(40,26,30,'2022-09-02 20:18:52','giao hàng nhanh x4'),(41,36,30,'2022-09-06 20:17:47','Giao hàng đúng giờ'),(42,36,33,'2022-09-06 20:27:47','giao hàng nhanh x3'),(43,28,30,'2022-09-08 15:52:25','giao hàng toc do'),(44,28,30,'2022-09-08 15:56:24','giao hàng nhanh x3'),(45,30,33,'2022-09-09 22:24:47','Giao hàng đúng giờ');
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,7 +67,7 @@ CREATE TABLE `product` (
   PRIMARY KEY (`id`),
   KEY `fk_product_user_idx` (`customer`),
   CONSTRAINT `fk_product_user` FOREIGN KEY (`customer`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,7 +76,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,1,'san pham 1','200','2022-08-10 00:00:00','ON','ssdfd','fdssdf','https://i1-dulich.vnecdn.net/2021/07/16/2-1626444940.jpg?w=0&h=0&q=100&dpr=2&fit=crop&s=GdpJnWaNQO_98jsWySh9cA','sản pham de vo can than van chuyen'),(2,1,'san pham 2','250','2022-08-10 00:00:00','ON','ưqee','eqw','https://i1-dulich.vnecdn.net/2021/07/16/2-1626444940.jpg?w=0&h=0&q=100&dpr=2&fit=crop&s=GdpJnWaNQO_98jsWySh9cA',NULL),(3,2,'san pham 3','270','2022-08-10 00:00:00','ON','dsfd','fdsfs','https://i1-dulich.vnecdn.net/2021/07/16/2-1626444940.jpg?w=0&h=0&q=100&dpr=2&fit=crop&s=GdpJnWaNQO_98jsWySh9cA',NULL),(4,2,'san pham 4','340','2022-08-10 00:00:00','ON','dsfd','fdsfs','https://i1-dulich.vnecdn.net/2021/07/16/2-1626444940.jpg?w=0&h=0&q=100&dpr=2&fit=crop&s=GdpJnWaNQO_98jsWySh9cA',NULL),(6,26,'cai ban nho','2000','2022-08-27 00:00:00','ACCEPT','dong thanh hoc mion','q12 tphcm','https://res.cloudinary.com/dvkt3pe95/image/upload/v1661573762/cjgvqvfwiwpn08z9dlqd.jpg','san pham kha cong kenh'),(7,26,'chair','20000','2022-09-02 00:00:00','ON','q1','q3','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662084057/cyvbbaecczf8fxz9ldus.png','ghe do choi'),(8,33,'chair2','30000','2022-09-02 00:00:00','ACCEPT','123/34 Ấp 5, Đông Thạnh, Hóc Môn','57/12 Phường 3 , Quận 7','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662111066/o46rz9m2yfux1y7ugy2l.jpg','Sản phẩm cồng kềnh');
+INSERT INTO `product` VALUES (1,1,'san pham 1','200','2022-08-10 00:00:00','ON','ssdfd','fdssdf','https://i1-dulich.vnecdn.net/2021/07/16/2-1626444940.jpg?w=0&h=0&q=100&dpr=2&fit=crop&s=GdpJnWaNQO_98jsWySh9cA','sản pham de vo can than van chuyen'),(2,1,'san pham 2','250','2022-08-10 00:00:00','ON','ưqee','eqw','https://i1-dulich.vnecdn.net/2021/07/16/2-1626444940.jpg?w=0&h=0&q=100&dpr=2&fit=crop&s=GdpJnWaNQO_98jsWySh9cA',NULL),(3,2,'san pham 3','270','2022-08-10 00:00:00','ON','dsfd','fdsfs','https://i1-dulich.vnecdn.net/2021/07/16/2-1626444940.jpg?w=0&h=0&q=100&dpr=2&fit=crop&s=GdpJnWaNQO_98jsWySh9cA',NULL),(4,2,'san pham 4','340','2022-08-10 00:00:00','ON','dsfd','fdsfs','https://i1-dulich.vnecdn.net/2021/07/16/2-1626444940.jpg?w=0&h=0&q=100&dpr=2&fit=crop&s=GdpJnWaNQO_98jsWySh9cA',NULL),(6,26,'cai ban nho','2000','2022-08-27 00:00:00','ACCEPT','dong thanh hoc mion','q12 tphcm','https://res.cloudinary.com/dvkt3pe95/image/upload/v1661573762/cjgvqvfwiwpn08z9dlqd.jpg','san pham kha cong kenh'),(7,26,'chair','20000','2022-09-02 00:00:00','ON','q1','q3','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662084057/cyvbbaecczf8fxz9ldus.png','ghe do choi'),(8,33,'chair2','30000','2022-09-02 00:00:00','ACCEPT','123/34 Ấp 5, Đông Thạnh, Hóc Môn','57/12 Phường 3 , Quận 7','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662111066/o46rz9m2yfux1y7ugy2l.jpg','Sản phẩm cồng kềnh'),(9,36,'Sản phẩm 2','10000','2022-09-06 00:00:00','ACCEPT','Q12','Hóc môn','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662469606/wnanzvf5sd6qyzuoscvk.png','Cần vận chuyển gấp');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -100,7 +100,7 @@ CREATE TABLE `product_shipper` (
   KEY `fk_product_idx` (`product`),
   CONSTRAINT `fk_product` FOREIGN KEY (`product`) REFERENCES `product` (`id`),
   CONSTRAINT `fk_shipper` FOREIGN KEY (`shipper`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -109,7 +109,7 @@ CREATE TABLE `product_shipper` (
 
 LOCK TABLES `product_shipper` WRITE;
 /*!40000 ALTER TABLE `product_shipper` DISABLE KEYS */;
-INSERT INTO `product_shipper` VALUES (1,30,1,222222,'2022-08-29','2022-08-29',0),(5,30,6,23000,'2022-08-30','2022-08-30',0),(6,32,6,2000,'2022-08-30','2022-08-30',2),(10,32,8,25000,'2022-09-02','2022-09-02',2);
+INSERT INTO `product_shipper` VALUES (1,30,1,15000,'2022-08-29','2022-09-09',0),(5,30,6,23000,'2022-08-30','2022-08-30',0),(6,32,6,2000,'2022-08-30','2022-08-30',2),(10,32,8,25000,'2022-09-02','2022-09-02',2),(11,32,9,9000,'2022-09-06','2022-09-06',2),(12,32,1,25000,'2022-09-09','2022-09-09',0);
 /*!40000 ALTER TABLE `product_shipper` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,7 +132,7 @@ CREATE TABLE `rating` (
   KEY `fk_rate_shipper_idx` (`shipper`),
   CONSTRAINT `fk_rate_cus` FOREIGN KEY (`customer`) REFERENCES `user` (`id`),
   CONSTRAINT `fk_rate_shipper` FOREIGN KEY (`shipper`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,7 +141,7 @@ CREATE TABLE `rating` (
 
 LOCK TABLES `rating` WRITE;
 /*!40000 ALTER TABLE `rating` DISABLE KEYS */;
-INSERT INTO `rating` VALUES (1,26,30,3,'2022-08-28 18:14:43','2022-08-29 10:49:10'),(2,26,32,4,'2022-08-28 21:13:00','2022-08-28 21:35:40'),(3,28,30,4,'2022-08-29 11:49:49','2022-08-29 11:54:48');
+INSERT INTO `rating` VALUES (1,26,30,3,'2022-08-28 18:14:43','2022-08-29 10:49:10'),(2,26,32,4,'2022-08-28 21:13:00','2022-08-28 21:35:40'),(3,28,30,3,'2022-08-29 11:49:49','2022-09-08 15:56:14'),(4,26,33,5,'2022-09-06 21:37:59','2022-09-06 21:50:38'),(5,28,33,2,'2022-09-08 15:53:41','2022-09-08 15:54:49');
 /*!40000 ALTER TABLE `rating` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,7 +166,7 @@ CREATE TABLE `user` (
   `userRole` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `shipper_idx` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,7 +175,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'nguyen','dung','dung@gmail.com','333','user1','$2a$10$dejM63z2jH2Q5gfEGjKVxO6b3wp8DkwsQDUoV.zQCjYJJ1Ni4gWqi',_binary '','2022-06-26','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662172326/mwje5icq51yvf2y4njnw.jpg','ADMIN'),(2,'nguiyen','dung2','dung2@gmail.com','234','user2','$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO',_binary '','2022-06-26','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662172326/mwje5icq51yvf2y4njnw.jpg','CUSTOMER'),(26,'nguyyen','A3','email3@gmail.com','0377641604','thanhdung1','$2a$10$Izth5sOh41dPDQLsqlas0..9OsUVa5Y.lOAUtCywrHW4geNsU95be',_binary '','2022-08-17','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662172326/mwje5icq51yvf2y4njnw.jpg','CUSTOMER'),(27,'nguyyen','A','email2@gmail.com','0377641604','thanhdung23','$2a$10$dejM63z2jH2Q5gfEGjKVxO6b3wp8DkwsQDUoV.zQCjYJJ1Ni4gWqi',_binary '','2022-08-17','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662172326/mwje5icq51yvf2y4njnw.jpg','CUSTOMER'),(28,'nguyyen','A','email@gmail.com','0377641604','thanhdung2','$2a$10$fIFgHZpypc.DTOjYXh.axe1uE8sduvguZZiAdnnr4CLq2bgKm/Crq',_binary '','2022-08-17','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662172326/mwje5icq51yvf2y4njnw.jpg','CUSTOMER'),(30,'Nguyen','Thanh','nguyenthanh@gmail.com','0377641604','thanhdung1455','$2a$10$hd5eogMMBbxkXSBZiRSCqONqkpcGyYYDze0mnTgRE53QYBs3hvTT.',_binary '','2022-08-18','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662172326/mwje5icq51yvf2y4njnw.jpg','SHIPPER'),(31,'nguyyen','A3','email3@gmail.com','0377641604','thanhdung143223','$2a$10$q0tstuUvPVr.F4IHPK9G/.RDelCJJGD7JcTCek0WnBuXVSNniSVX2',_binary '','2022-08-18','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662172326/mwje5icq51yvf2y4njnw.jpg','CUSTOMER'),(32,'nguyyen','A','email@gmail.com','0377641604','thanhdung13434','$2a$10$u5el9GS2ATcwfOmB7s3kH.yGezdzR3wcTR5fswS/AHr0YsG0Q2Nyu',_binary '','2022-08-18','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662172326/mwje5icq51yvf2y4njnw.jpg','SHIPPER'),(33,'Custom','1','email3@gmail.com','0377641604','cus1','$2a$10$F7BmYvnq7USBQ9CaUexE6OBir/4IuyIylBVmoPAZrQF6sD47G18Gm',_binary '','2022-09-02','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662110947/f1yzkczgbcknhskii3c2.jpg','SHIPPER'),(35,'Custom','3','email3@gmail.com','0377641604','cus3','$2a$10$IBmddad8gppWb9SQ0tOAwuwVbLoU561m6qeQPCfJMohfrPUZNzFZ2',_binary '','2022-09-03','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662194260/l5u5megmp9tvzgjhuobj.jpg','CUSTOMER');
+INSERT INTO `user` VALUES (1,'nguyen','dung','dung@gmail.com','333','admin','$2a$10$dejM63z2jH2Q5gfEGjKVxO6b3wp8DkwsQDUoV.zQCjYJJ1Ni4gWqi',_binary '','2022-06-26','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662172326/mwje5icq51yvf2y4njnw.jpg','ADMIN'),(2,'nguiyen','dung2','dung2@gmail.com','234','user2','$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO',_binary '','2022-06-26','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662172326/mwje5icq51yvf2y4njnw.jpg','CUSTOMER'),(26,'nguyyen','A3','email3@gmail.com','0377641604','thanhdung1','$2a$10$Izth5sOh41dPDQLsqlas0..9OsUVa5Y.lOAUtCywrHW4geNsU95be',_binary '','2022-08-17','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662172326/mwje5icq51yvf2y4njnw.jpg','CUSTOMER'),(27,'nguyyen','A','email2@gmail.com','0377641604','thanhdung23','$2a$10$dejM63z2jH2Q5gfEGjKVxO6b3wp8DkwsQDUoV.zQCjYJJ1Ni4gWqi',_binary '','2022-08-17','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662172326/mwje5icq51yvf2y4njnw.jpg','CUSTOMER'),(28,'nguyyen','A','email@gmail.com','0377641604','thanhdung2','$2a$10$fIFgHZpypc.DTOjYXh.axe1uE8sduvguZZiAdnnr4CLq2bgKm/Crq',_binary '','2022-08-17','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662172326/mwje5icq51yvf2y4njnw.jpg','CUSTOMER'),(30,'Nguyen','Thanh','nguyenthanh@gmail.com','0377641604','shipper1','$2a$10$hd5eogMMBbxkXSBZiRSCqONqkpcGyYYDze0mnTgRE53QYBs3hvTT.',_binary '','2022-08-18','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662172326/mwje5icq51yvf2y4njnw.jpg','SHIPPER'),(31,'nguyyen','A3','email3@gmail.com','0377641604','thanhdung143223','$2a$10$q0tstuUvPVr.F4IHPK9G/.RDelCJJGD7JcTCek0WnBuXVSNniSVX2',_binary '','2022-08-18','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662172326/mwje5icq51yvf2y4njnw.jpg','CUSTOMER'),(32,'nguyyen','A','email@gmail.com','0377641604','shipper2','$2a$10$u5el9GS2ATcwfOmB7s3kH.yGezdzR3wcTR5fswS/AHr0YsG0Q2Nyu',_binary '','2022-08-18','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662172326/mwje5icq51yvf2y4njnw.jpg','SHIPPER'),(33,'Custom','1','email3@gmail.com','0377641604','cus1','$2a$10$F7BmYvnq7USBQ9CaUexE6OBir/4IuyIylBVmoPAZrQF6sD47G18Gm',_binary '','2022-09-02','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662110947/f1yzkczgbcknhskii3c2.jpg','SHIPPER'),(35,'Custom','3','email3@gmail.com','0377641604','cus3','$2a$10$IBmddad8gppWb9SQ0tOAwuwVbLoU561m6qeQPCfJMohfrPUZNzFZ2',_binary '','2022-09-03','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662194260/l5u5megmp9tvzgjhuobj.jpg','CUSTOMER'),(36,'tuong','quan','email444@gmail.com','3244234233','quan1','$2a$10$3Lh5Qvk64qoOc6nape//n.7CSHVUvGUOXT4quYME87Mo5h8qCfoMe',_binary '','2022-09-06','https://res.cloudinary.com/dvkt3pe95/image/upload/v1662469484/lj3izdqpmj5dnytlb3xf.jpg','CUSTOMER');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -215,4 +215,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-04 14:10:42
+-- Dump completed on 2022-09-10 13:06:05

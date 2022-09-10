@@ -81,7 +81,10 @@ public class RatingRepositoryImpl implements RatingRepository {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         Query q = session.createQuery("Select avg(rate) From Rating r where r.shipper.id = :shipper");
         q.setParameter("shipper", id);
-        long a = Math.round((double) q.getSingleResult());
-        return a ;
+        if (q.getSingleResult() != null){
+            long a = Math.round((double) q.getSingleResult());
+        return a ;}
+        else
+            return 5;
     }
 }
